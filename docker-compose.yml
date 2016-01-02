@@ -1,0 +1,4 @@
+todo:
+    build: ./app
+    ports:
+        - 80:80
