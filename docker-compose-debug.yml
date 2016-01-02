@@ -1,0 +1,9 @@
+tododbg:
+    extends:
+        file: docker-compose.yml
+        service: todo
+    command: -Xdebug -agentlib:jdwp=transport=dt_socket,address=9999,server=y,suspend=n -Djava.security.egd=file:/dev/urandom -jar app.jar
+    expose:
+        - 9999
+    ports:
+        - 9999:9999

@@ -6,7 +6,7 @@ DOCKER_DATA_CTN_NAME=gradle_cache
 
 .PHONY: all
 
-all: build run
+all: build run logs
 
 init:
 	-docker create --name $(DOCKER_DATA_CTN_NAME) $(GRADLE_DOCKER_IMAGE):$(GRADLE_VERSION)
@@ -28,3 +28,9 @@ gradle_bash:
 
 logs:
 	docker-compose logs
+
+rundebug:
+	docker-compose -f docker-compose-debug.yml build && docker-compose -f docker-compose-debug.yml up -d
+
+debug: build rundebug logs
+	
