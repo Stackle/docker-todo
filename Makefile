@@ -33,4 +33,12 @@ rundebug:
 	docker-compose -f docker-compose-debug.yml build && docker-compose -f docker-compose-debug.yml up -d
 
 debug: build rundebug logs
+
+clear_data:
+	docker-compose rm -f data_container
+
+start:
+	docker-compose up -d
 	
+stop:
+	docker-compose stop

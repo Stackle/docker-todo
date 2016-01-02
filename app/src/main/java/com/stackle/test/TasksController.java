@@ -16,6 +16,10 @@ public class TasksController {
 	@Autowired
 	private TaskRepository taskRepository;
 	
+	private Object resultSuccess = new Object() {
+		  public final boolean success = true;
+	};
+	
     @RequestMapping("/")
     public Iterable<Task> all() {
         return taskRepository.findAll();
@@ -49,8 +53,6 @@ public class TasksController {
     @RequestMapping("/delete/{id}")
     public Object delete(@PathVariable Long id) {
     	taskRepository.delete(id);
-    	return new Object() {
-    		  public final boolean success = true;
-    	};
+    	return resultSuccess;
     }
 }
